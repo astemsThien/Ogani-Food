@@ -1243,6 +1243,11 @@ ol {
 	margin-bottom: 0;
 }
 
+.sidebar__item__size label:hover {
+	background: #7fad39;
+	color: white;
+}
+
 .sidebar__item__size label input {
 	position: absolute;
 	visibility: hidden;
@@ -1322,17 +1327,17 @@ ol {
 	margin-right: 0;
 }
 
-.product__item__pic__hover li:hover a {
+.product__item__pic__hover li:hover button {
 	background: #7fad39;
 	border-color: #7fad39;
 }
 
-.product__item__pic__hover li:hover a i {
+.product__item__pic__hover li:hover button i {
 	color: #ffffff;
 	transform: rotate(360deg);
 }
 
-.product__item__pic__hover li a {
+.product__item__pic__hover li button {
 	font-size: 16px;
 	color: #1c1c1c;
 	height: 40px;
@@ -1350,7 +1355,7 @@ ol {
 	transition: all, 0.5s;
 }
 
-.product__item__pic__hover li a i {
+.product__item__pic__hover li button i {
 	position: relative;
 	transform: rotate(0);
 	-webkit-transition: all, 0.3s;
@@ -1621,6 +1626,9 @@ ol {
 .product__pagination,
 .blog__pagination {
 	padding-top: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .product__pagination a,
@@ -1913,6 +1921,7 @@ ol {
 .shoping__cart__table table tbody tr td.shoping__cart__item {
 	width: 630px;
 	text-align: left;
+	display: inherit;
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__item img {
@@ -2050,6 +2059,8 @@ ol {
 	padding-bottom: 0;
 	border-bottom: none;
 	margin-bottom: 0;
+	border-top: 2px solid gray;
+	padding-top: 10px;
 }
 
 .shoping__checkout ul li span {

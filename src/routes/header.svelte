@@ -2,6 +2,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { onMount } from 'svelte';
+import { cart, card } from '$lib/config/cart.js';
+
+import Logo from './images/logo.png';
 
 let email = ''; 
 // let username = '';
@@ -60,6 +63,9 @@ const app = initializeApp(firebaseConfig);
             user = newUser;
         });
     })
+
+    // tổng sản phẩm trong giỏ hàng
+		$: total = $cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 </script>
 
 <!-- Header Section Begin -->
@@ -133,14 +139,14 @@ const app = initializeApp(firebaseConfig);
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="/"><img src="img/logo.png" alt=""></a>
+                    <a href="/"><img src={Logo} alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="/">Home</a></li>
-                        <li><a href="/">Shop</a></li>
+                        <li><a href="/product1">Shop</a></li>
                         <li><a href="/">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="/">Shop Details</a></li>
@@ -158,9 +164,9 @@ const app = initializeApp(firebaseConfig);
                 <div class="header__cart">
                     <ul>
                         <li><a href="/"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="/"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        <li><a href="/shopping"><i class="fa fa-shopping-bag"></i> <span>{$cart.length}</span></a></li>
                     </ul>
-                    <div class="header__cart__price">item: <span>150k</span></div>
+                    <div class="header__cart__price">Tổng tiền: <span>{total} đ</span></div>
                 </div>
             </div>
         </div>
@@ -178,8 +184,8 @@ const app = initializeApp(firebaseConfig);
                 <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <i class="fa fa-heart"></i>
+                            <span>OGANI &nbsp;&nbsp;xin chào!</span>
                         </div>
                         <ul >
                             <li><a href="/">Fresh Meat</a></li>
